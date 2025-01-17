@@ -19,7 +19,8 @@
         "url": "https://github.com/pphatdev/cookies/issues"
     },
     "publishConfig": {
-        "registry": "https://npm.pkg.github.com"
+        "registry": "https://registry.npmjs.org/",
+        "access": "public"
     },
     "homepage": "https://github.com/pphatdev/cookies#readme",
     "keywords": [

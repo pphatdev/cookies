@@ -1,42 +1,31 @@
-name: 🍪
+name: 🍪 Publish Package
+
 on:
   push:
-    branches:
-      - master
-    tags:
-      - "!*"
+    branches: [master]
+
 jobs:
-  release:
-    name: Setup
+  publish:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v3
-      - name: setup Node
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
-          registry-url: 'https://npm.pkg.github.com'
-      - name: install
-        run: npm install
+          node-version: "16.x"
+          registry-url: "https://registry.npmjs.org/"
+          scope: "@sophat"
 
-      - name: build
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
         run: npm run build
 
-      # Publish to npm if this version is not published
-      - name: Publish
+      - name: Publish to NPM
         run: |
-          npx can-npm-publish --yes --verbose && npm publish || echo "Does not publish"
+          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > .npmrc
+          npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
-      # Push tag to GitHub if the version's tag is not tagged
-      - name: set PACKAGE_VERSION
-        run: node -p -e '`PACKAGE_VERSION=${require("./package.json").version}`' >> $GITHUB_ENV
-      - name: package-version-to-git-tag
-        uses: pkgdeps/git-tag-action@v2
-        with:
-          github_token: ${{ secrets.GH_TOKEN }}
-          github_repo: ${{ github.repository }}
-          version: ${{ env.PACKAGE_VERSION }}
-          git_commit_sha: ${{ github.sha }}
-          git_tag_prefix: "apps/test/v"
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
