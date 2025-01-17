@@ -1,0 +1,43 @@
+{
+    "name": "@sophat/cookies",
+    "version": "0.0.1",
+    "description": "This project provides a set of utility functions for interacting with browser cookies. The `Cookies` class offers methods to set, get, update, remove, and clear cookies, as well as retrieve all cookie keys.",
+    "main": "dist/index.js",
+    "type": "module",
+    "scripts": {
+        "build": "tsc",
+        "test": "jest --config jest.config.ts",
+        "prepare": "npm run build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/pphatdev/cookies.git"
+    },
+    "author": "pphatdev <info.sophat@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/pphatdev/cookies/issues"
+    },
+    "homepage": "https://github.com/pphatdev/cookies#readme",
+    "keywords": [
+        "cookies",
+        "browser-cookies",
+        "cookie-management",
+        "web-storage",
+        "javascript-cookies",
+        "typescript",
+        "cookie-utility",
+        "cookie-handler",
+        "browser-storage",
+        "client-storage",
+        "web-cookies",
+        "cookie-parser",
+        "cookie-setter",
+        "cookie-getter"
+    ],
+    "devDependencies": {
+        "@types/node": "^22.10.7",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.7.3"
+    }
+}
