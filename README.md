@@ -4,10 +4,22 @@ This project provides a set of utility functions for interacting with browser co
 
 ## Installation
 
-To install the project, clone the repository and run:
+You can install the package via npm:
 
+```bash
+npm install @sophat/cookies
 ```
-npm install
+
+Or using yarn:
+
+```bash
+yarn add @sophat/cookies
+```
+
+Or using local via github
+
+```bash
+cd project_dir/packages && git clone https://github.com/pphatdev/cookies.git && npm link @sophat/cookies
 ```
 
 ## Usage
@@ -15,7 +27,7 @@ npm install
 ### Setting a Cookie
 
 ```typescript
-import { Cookies } from './src/cookies';
+import { Cookies } from '@sophat/cookies';
 
 Cookies.setItem('key', 'value', { expires: 7 });
 ```
