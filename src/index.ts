@@ -93,3 +93,6 @@ declare global {
 }
 
 window.Cookies = Cookies;
+
+export type { CookieOptions };
+export default Cookies;
