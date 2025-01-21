@@ -16,38 +16,59 @@ Or using yarn:
 yarn add @sophat/cookies
 ```
 
-Or using local via github
+## Usage
 
-```bash
-cd project_dir/packages && git clone https://github.com/pphatdev/cookies.git && npm link @sophat/cookies
+### Using React Hook
+
+```tsx
+import { useCookies } from '@sophat/cookies/hooks';
+
+function MyComponent() {
+    const { value, setValue, remove } = useCookies('my-cookie');
+
+    return (
+        <div>
+            <p>Cookie value: {value}</p>
+            <button onClick={() => setValue('new value', { 
+                expires: new Date('2024-12-31'),
+                path: '/',
+                secure: true,
+                sameSite: 'strict'
+            })}>
+                Update Cookie
+            </button>
+            <button onClick={remove}>Remove Cookie</button>
+        </div>
+    );
+}
 ```
 
-## Usage
+### Using Direct Cookie Methods
 
 ### Setting a Cookie
 
 ```typescript
 import { Cookies } from '@sophat/cookies';
 
-Cookies.setItem('key', 'value', { expires: 7 });
+Cookies.set('key', 'value', {
+    expires: new Date('2024-12-31'),
+    path: '/',
+    domain: 'example.com',
+    secure: true,
+    sameSite: 'strict'
+});
 ```
 
 ### Getting a Cookie
 
 ```typescript
-const value = Cookies.getItem('key');
-```
-
-### Updating a Cookie
-
-```typescript
-Cookies.updateItem('key', 'newValue');
+const value = Cookies.get('key');
 ```
 
 ### Removing a Cookie
 
 ```typescript
-Cookies.removeItem('key');
+Cookies.remove('key');
 ```
 
 ### Clearing All Cookies
@@ -59,7 +80,19 @@ Cookies.clear();
 ### Getting All Cookie Keys
 
 ```typescript
-const keys = Cookies.getKeys();
+const keys = Cookies.keys();
+```
+
+### Cookie Options
+
+```ts
+interface CookieOptions {
+    expires?: Date | string | number;
+    path?: string;
+    domain?: string;
+    secure?: boolean;
+    sameSite?: 'strict' | 'lax' | 'none';
+}
 ```
 
 ## License
