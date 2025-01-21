@@ -24,20 +24,32 @@ yarn add @sophat/cookies
 import { useCookies } from '@sophat/cookies/hooks';
 
 function MyComponent() {
-    const { value, setValue, remove } = useCookies('my-cookie');
+    const { getCookie, getKeys, updateCookie, removeCookie, clearCookies } = useCookies();
+
+    const handleGetCookie = () => {
+        const cookieValue = getCookie('my-cookie');
+        console.log('Cookie Value:', cookieValue);
+    };
+
+    const handleUpdateCookie = () => {
+        updateCookie('my-cookie', 'new value', {
+            expires: new Date('2024-12-31'),
+            path: '/',
+            secure: true,
+            sameSite: 'Strict'
+        });
+    };
+
+    const handleRemoveCookie = () => {
+        removeCookie('my-cookie');
+    };
 
     return (
         <div>
-            <p>Cookie value: {value}</p>
-            <button onClick={() => setValue('new value', { 
-                expires: new Date('2024-12-31'),
-                path: '/',
-                secure: true,
-                sameSite: 'strict'
-            })}>
-                Update Cookie
-            </button>
-            <button onClick={remove}>Remove Cookie</button>
+            <button onClick={handleGetCookie}>Get Cookie</button>
+            <button onClick={handleUpdateCookie}>Update Cookie</button>
+            <button onClick={handleRemoveCookie}>Remove Cookie</button>
+            <button onClick={clearCookies}>Clear All Cookies</button>
         </div>
     );
 }
@@ -49,14 +61,19 @@ function MyComponent() {
 
 ```typescript
 import { Cookies } from '@sophat/cookies';
+import type { CookieOptions } from '@interfaces/cookie-options';
 
-Cookies.set('key', 'value', {
+Cookies.setItem('key', 'value', {
     expires: new Date('2024-12-31'),
     path: '/',
     domain: 'example.com',
     secure: true,
-    sameSite: 'strict'
+    sameSite: 'Strict'
 });
+
+const value = Cookies.getItem('key');
+Cookies.removeItem('key');
+Cookies.clear();
 ```
 
 ### Getting a Cookie
