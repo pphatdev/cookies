@@ -1,28 +1,31 @@
-import { useState, useEffect } from 'react';
-import { Cookies } from '../index';
+import { Cookies } from '../cookie/index';
 import type { CookieOptions } from '@interfaces/cookie-options';
 
-export function useCookies(key: string) {
-    const [cookie, setCookie] = useState<string | null>(null);
+export function useCookies() {
 
-    useEffect(() => {
-        // Get initial cookie value
-        setCookie(Cookies.getItem(key));
-    }, [key]);
-
-    const updateCookie = (value: string, options?: CookieOptions) => {
-        Cookies.setItem(key, value, options);
-        setCookie(value);
+    const getCookie = (name: string): string | null => {
+        return Cookies.getItem(name);
     };
 
-    const removeCookie = () => {
-        Cookies.removeItem(key);
-        setCookie(null);
+    const getKeys = () => {
+        return Cookies.getKeys();
+    }
+
+    const updateCookie = (name: string, value: string, options?: CookieOptions) => {
+        Cookies.setItem(name, value, options);
+    };
+
+    const removeCookie = (name: string) => {
+        Cookies.removeItem(name);
     };
 
     return {
-        cookie,
+        getCookie,
+        getKeys,
         updateCookie,
-        removeCookie
+        removeCookie,
+        clearCookies: Cookies.clear
     };
 }
+
+export default useCookies;
