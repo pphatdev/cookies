@@ -4,6 +4,10 @@ import { CookieOptions } from "@interfaces/cookie-options";
  * Provides a set of utility functions for interacting with browser cookies.
  */
 export class Cookies {
+    private static isClient(): boolean {
+        return typeof window !== 'undefined' && typeof document !== 'undefined';
+    }
+
     /**
      * Sets a cookie with the specified key and value.
      * @param key - The key to store the cookie under.
@@ -11,6 +15,8 @@ export class Cookies {
      * @param options - Additional options for the cookie.
      */
     static setItem(key: string, value: string, options?: CookieOptions): void {
+        if (!this.isClient()) return;
+
         let cookieString = `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
 
         if (options) {
@@ -27,6 +33,9 @@ export class Cookies {
             if (options.secure) {
                 cookieString += `; secure`;
             }
+            if (options.sameSite) {
+                cookieString += `; samesite=${options.sameSite}`;
+            }
         }
 
         document.cookie = cookieString;
@@ -38,6 +47,8 @@ export class Cookies {
      * @returns The value of the cookie, or `null` if the cookie does not exist.
      */
     static getItem(key: string): string | null {
+        if (!this.isClient()) return null;
+
         const cookies = document.cookie.split('; ');
         for (const cookie of cookies) {
             const [cookieKey, cookieValue] = cookie.split('=');
@@ -63,6 +74,7 @@ export class Cookies {
      * @param key - The key of the cookie to remove.
      */
     static removeItem(key: string): void {
+        if (!this.isClient()) return;
         document.cookie = `${encodeURIComponent(key)}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
     }
 
@@ -70,6 +82,7 @@ export class Cookies {
      * Clears all cookies.
      */
     static clear(): void {
+        if (!this.isClient()) return;
         const cookies = document.cookie.split('; ');
         for (const cookie of cookies) {
             const cookieKey = cookie.split('=')[0];
@@ -82,6 +95,7 @@ export class Cookies {
      * @returns An array of all the keys stored in the cookies.
      */
     static getKeys(): string[] {
+        if (!this.isClient()) return [];
         return document.cookie.split('; ').map(cookie => decodeURIComponent(cookie.split('=')[0]));
     }
 }
@@ -91,8 +105,6 @@ declare global {
         Cookies: typeof Cookies;
     }
 }
-
-window.Cookies = Cookies;
 
 export type { CookieOptions };
 export default Cookies;
