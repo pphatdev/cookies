@@ -1,11 +1,13 @@
 {
     "name": "@sophat/cookies",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "description": "This project provides a set of utility functions for interacting with browser cookies. The `Cookies` class offers methods to set, get, update, remove, and clear cookies, as well as retrieve all cookie keys.",
     "main": "./dist/index.js",
     "exports": {
         ".": "./dist/index.js",
-        "./hooks": "./dist/hooks/useCookies.js"
+        "./hooks": "./dist/hooks/useCookies.js",
+        "./cookie": "./dist/cookie/index.js",
+        "./windows": "./dist/windows/CookiesWindow.js"
     },
     "type": "module",
     "scripts": {
@@ -42,10 +44,6 @@
         "cookie-setter",
         "cookie-getter"
     ],
-    "peerDependencies": {
-        "react": ">=16.8.0",
-        "react-dom": ">=16.8.0"
-    },
     "devDependencies": {
         "@types/react": "^18.0.0",
         "@types/react-dom": "^18.0.0",
