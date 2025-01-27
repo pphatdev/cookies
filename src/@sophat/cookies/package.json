@@ -1,6 +1,6 @@
 {
     "name": "@sophat/cookies",
-    "version": "0.2.4",
+    "version": "0.2.5",
     "description": "This project provides a set of utility functions for interacting with browser cookies. The `Cookies` class offers methods to set, get, update, remove, and clear cookies, as well as retrieve all cookie keys.",
     "main": "./dist/index.js",
     "exports": {

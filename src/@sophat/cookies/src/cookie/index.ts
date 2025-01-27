@@ -101,6 +101,22 @@ export class Cookies {
             .map(cookie => cookie.split('=')[0].trim())
             .filter(name => name.length > 0);
     }
+
+    /**
+     * Has the cookie with the specified name been set?
+     * Returns true if the cookie is set, and false otherwise.
+     *
+     * @param name - The name of the cookie to check
+     *
+     * @example
+     * ```typescript
+     * const hasUserToken = Cookie.hasItem('userToken');
+     * console.log(hasUserToken); // true
+     * ```
+     */
+    static hasItem(name: string): boolean {
+        return this.getKeys().includes(name);
+    }
 };
 
 
