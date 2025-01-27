@@ -18,19 +18,91 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Cookie Utility
 
-## Learn More
+This project provides a set of utility functions for interacting with browser cookies. The `Cookies` class offers methods to set, get, update, remove, and clear cookies, as well as retrieve all cookie keys.
 
-To learn more about Next.js, take a look at the following resources:
+### Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+You can install the package via npm:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm install @sophat/cookies
+```
 
-## Deploy on Vercel
+Or using yarn:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+yarn add @sophat/cookies
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Usage
+
+#### Importing the Library
+
+To use the `Cookies` class and `useCookie` hook, import them as follows:
+
+```typescript
+import { Cookies, useCookie } from '@sophat/cookies';
+```
+example: [demo](https://github.com/pphatdev/cookies/blob/master/src/app/page.tsx)
+
+#### Using the `Cookies` Class
+
+##### Setting a Cookie
+
+```typescript
+Cookies.setItem('userToken', 'abc123', { expires: 7 });
+```
+
+##### Getting a Cookie
+
+```typescript
+const userToken = Cookies.getItem('userToken');
+console.log(userToken); // 'abc123'
+```
+
+##### Removing a Cookie
+
+```typescript
+Cookies.removeItem('userToken');
+```
+
+##### Getting All Cookie Names
+
+```typescript
+const cookieNames = Cookies.getKeys();
+console.log(cookieNames); // ['userToken']
+```
+
+#### Using the `useCookie` Hook
+
+##### Setting a Cookie
+
+```typescript
+const { setCookie } = useCookie();
+setCookie('user', 'john', { expires: 7 });
+```
+
+##### Getting a Cookie
+
+```typescript
+const { getCookie } = useCookie();
+const value = getCookie('user');
+console.log(value); // 'john'
+```
+
+##### Removing a Cookie
+
+```typescript
+const { removeCookie } = useCookie();
+removeCookie('user');
+```
+
+##### Getting All Cookie Names
+
+```typescript
+const { getKeys } = useCookie();
+const cookieNames = getKeys();
+console.log(cookieNames); // ['user']
+```
