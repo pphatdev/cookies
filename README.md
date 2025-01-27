@@ -1,117 +1,36 @@
-# Cookie Utility
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-This project provides a set of utility functions for interacting with browser cookies. The `Cookies` class offers methods to set, get, update, remove, and clear cookies, as well as retrieve all cookie keys.
+## Getting Started
 
-## Installation
-
-You can install the package via npm:
+First, run the development server:
 
 ```bash
-npm install @sophat/cookies
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-Or using yarn:
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```bash
-yarn add @sophat/cookies
-```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Usage
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-### Using React Hook
+## Learn More
 
-```tsx
-import { useCookies } from '@sophat/cookies/hooks';
+To learn more about Next.js, take a look at the following resources:
 
-function MyComponent() {
-    const { getCookie, getKeys, updateCookie, removeCookie, clearCookies } = useCookies();
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-    const handleGetCookie = () => {
-        const cookieValue = getCookie('my-cookie');
-        console.log('Cookie Value:', cookieValue);
-    };
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-    const handleUpdateCookie = () => {
-        updateCookie('my-cookie', 'new value', {
-            expires: new Date('2024-12-31'),
-            path: '/',
-            secure: true,
-            sameSite: 'Strict'
-        });
-    };
+## Deploy on Vercel
 
-    const handleRemoveCookie = () => {
-        removeCookie('my-cookie');
-    };
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-    return (
-        <div>
-            <button onClick={handleGetCookie}>Get Cookie</button>
-            <button onClick={handleUpdateCookie}>Update Cookie</button>
-            <button onClick={handleRemoveCookie}>Remove Cookie</button>
-            <button onClick={clearCookies}>Clear All Cookies</button>
-        </div>
-    );
-}
-```
-
-### Using Direct Cookie Methods
-
-### Setting a Cookie
-
-```typescript
-import { Cookies } from '@sophat/cookies';
-import type { CookieOptions } from '@interfaces/cookie-options';
-
-Cookies.setItem('key', 'value', {
-    expires: new Date('2024-12-31'),
-    path: '/',
-    domain: 'example.com',
-    secure: true,
-    sameSite: 'Strict'
-});
-
-const value = Cookies.getItem('key');
-Cookies.removeItem('key');
-Cookies.clear();
-```
-
-### Getting a Cookie
-
-```typescript
-const value = Cookies.get('key');
-```
-
-### Removing a Cookie
-
-```typescript
-Cookies.remove('key');
-```
-
-### Clearing All Cookies
-
-```typescript
-Cookies.clear();
-```
-
-### Getting All Cookie Keys
-
-```typescript
-const keys = Cookies.keys();
-```
-
-### Cookie Options
-
-```ts
-interface CookieOptions {
-    expires?: Date | string | number;
-    path?: string;
-    domain?: string;
-    secure?: boolean;
-    sameSite?: 'strict' | 'lax' | 'none';
-}
-```
-
-## License
-
-This project is licensed under the MIT License.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
