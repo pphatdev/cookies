@@ -1,5 +1,5 @@
-import Cookies from "src/cookie";
-import { CookieOptions } from '@interfaces/cookie-options';
+import Cookies from "../cookie";
+import { CookieOptions } from '../interfaces/cookie-options';
 
 /**
  * Custom hook for managing cookies in a React application.

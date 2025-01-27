@@ -1,5 +1,5 @@
-import Cookies from "src/cookie";
-export type { CookieOptions } from "@interfaces/cookie-options";
+import Cookies from "../cookie";
+export type { CookieOptions } from "../interfaces/cookie-options";
 
 declare global {
     interface Window {

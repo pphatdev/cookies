@@ -1,4 +1,4 @@
-import { CookieOptions } from "@interfaces/cookie-options";
+import { CookieOptions } from "../interfaces/cookie-options";
 
 export class Cookies {
     /**

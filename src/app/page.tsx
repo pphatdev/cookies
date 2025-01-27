@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { useCookie } from '@sophat/cookies'
+import { useCookie } from '../@sophat/cookies/src/hooks/useCookies'
 import { PlusIcon } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { DataTableDemo, type CookieNames } from '@app/table'

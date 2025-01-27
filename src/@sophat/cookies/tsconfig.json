@@ -19,6 +19,7 @@
         "sourceMap": false,
         "baseUrl": ".",
         "paths": {
+            "@/*": ["src/*"],
             "@utils/*": ["src/utils/*"],
             "@types/*": ["src/types/*"],
             "@interfaces/*": ["src/interfaces/*"],
