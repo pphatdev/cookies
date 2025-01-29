@@ -14,7 +14,7 @@
     "@radix-ui/react-menubar": "^1.1.5",
     "@radix-ui/react-select": "^2.1.5",
     "@radix-ui/react-slot": "^1.1.1",
-    "@sophat/cookies": "^0.2.5",
+    "@sophat/cookies": "^0.2.6",
     "@tailwindcss/postcss": "^4.0.0",
     "@tanstack/react-table": "^8.20.6",
     "class-variance-authority": "^0.7.1",
