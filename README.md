@@ -45,7 +45,9 @@ To use the `Cookies` class and `useCookie` hook, import them as follows:
 ```typescript
 import { Cookies, useCookie } from '@sophat/cookies';
 ```
-example: [demo](https://github.com/pphatdev/cookies/blob/master/src/app/page.tsx)
+📂 Example: [Usage](https://github.com/pphatdev/cookies/blob/master/src/app/page.tsx) 
+<br/>
+🚀 Example: [Demo](https://pphatdev.github.io/cookies/) 
 
 #### Using the `Cookies` Class
 
