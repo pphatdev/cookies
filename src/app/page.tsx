@@ -64,8 +64,8 @@ export default function Basic() {
             <h2 className='text-xl font-medium'>Create Cookie Name</h2>
 
             <form onSubmit={createCookieHandle} className='flex gap-2'>
-                <Input name='cookieName' type="text" placeholder="Cookie Name"/>
-                <Input name='cookieValue' type="text" placeholder="Cookie Value"/>
+                <Input name='cookieName' type="text" placeholder="Cookie Name" required/>
+                <Input name='cookieValue' type="text" placeholder="Cookie Value" required/>
                 <Button type='submit' className='cursor-pointer'>
                     <PlusIcon size={24} />
                 </Button>
@@ -74,7 +74,7 @@ export default function Basic() {
             <h2 className='text-xl font-medium'>Delete Cookie Name</h2>
 
             <form className='flex gap-2' onSubmit={deleteCookieHandle}>
-                <Select name='deleteCookieName'>
+                <Select name='deleteCookieName' required>
                     <SelectTrigger>
                         <SelectValue placeholder="Select Cookie" />
                     </SelectTrigger>
