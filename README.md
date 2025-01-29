@@ -22,6 +22,10 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project provides a set of utility functions for interacting with browser cookies. The `Cookies` class offers methods to set, get, update, remove, and clear cookies, as well as retrieve all cookie keys.
 
+[![Demo](https://img.shields.io/github/deployments/pphatdev/cookies/github-pages?logo=github&label=Demo)](https://pphatdev.github.io/cookies)
+![npm](https://img.shields.io/npm/dm/%40sophat%2Fcookies?style=flat&logo=npm&logoSize=auto&label=Download)
+![Version](https://img.shields.io/github/package-json/v/pphatdev/cookies?style=flat&logo=npm&label=Version)
+
 ### Installation
 
 You can install the package via npm:
